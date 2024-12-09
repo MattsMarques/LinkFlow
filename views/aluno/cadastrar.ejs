@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Cadastro</title>
+    <%-include("../partials/cabecalho.ejs")%>
+</head>
+<body>
+    <div class="container">
+        <form action="/alunos" method="POST">
+            <input type="hidden" name="_id" value="<%= aluno._id %>">
+           <div>
+                <label class="form-label">Matrícula</label>
+                <input value="<%= aluno.matricula %>" required type="text" name="matricula" class="form-control">
+           </div>
+           <div>
+                <label class="form-label">Nome</label>
+                <input value="<%= aluno.nome %>" required type="text" name="nome" class="form-control">
+           </div>
+           <div>
+                <label class="form-label">Curso</label>
+                <input value="<%= aluno.curso %>" required type="text" name="curso" class="form-control">
+           </div>
+           <div>
+               <input type="submit" value="Salvar" class="btn btn-success">
+           </div>
+        </form> 
+    </div>
+         <%-include("../partials/rodape.ejs")%> 
+         
+         
+
+
+</body>
+</html>
