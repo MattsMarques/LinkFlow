@@ -40,7 +40,8 @@ class usuarioController{
     //cadastro
     static async cadastrarGet(req,res){
         const status = req.query.s;
-        res.render("usuario/cadastrar", {status});
+        const usuario = {};
+        res.render("usuario/cadastrar", {status, usuario});
     }
 
     //detalhar
