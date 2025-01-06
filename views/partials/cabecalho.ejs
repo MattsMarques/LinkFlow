@@ -2,14 +2,12 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Paulo</a>
+      <a class="navbar-brand" href="/">LinkFlow</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          
-         
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Funcionarios
@@ -21,26 +19,16 @@
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Setores
+                Setors
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/setores/cadastrar">Cadastrar setor</a></li>
-                <li><a class="dropdown-item" href="/setores">Listagem de setores</a></li>
+                <li><a class="dropdown-item" href="/setors/cadastrar">Cadastrar setor</a></li>
+                <li><a class="dropdown-item" href="/setors">Listagem de setores</a></li>
               </ul>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Usuários
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/usuarios/cadastrar">Cadastrar usuário</a></li>
-                  <li><a class="dropdown-item" href="/usuarios">Listagem de usuários</a></li>
-                </ul>
-                <span class="navbar-text">
-                  Sair
-                </span>
-          </li>
-        </ul>
-      </div>
+            </ul>
+          </div>
+          <span class="navbar-text">
+            <a href="/usuarios/logout" class="btn btn-outline-danger">Sair</a>
+          </span>        
     </div>
   </nav>

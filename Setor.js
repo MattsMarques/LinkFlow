@@ -1,9 +1,9 @@
-class Funcionario{
-    constructor(descricao, nome, estado){
-        this.descricao = descricao;
+class Setor{
+    constructor(nome, estado, descricao){
         this.nome = nome;
         this.estado = estado;
+        this.descricao = descricao;
     }
 }
 
-module.exports = Funcionario;
+module.exports = Setor;

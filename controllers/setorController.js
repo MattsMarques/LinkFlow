@@ -5,8 +5,8 @@ class setorController{
     //listagem
     static async listar(req, res){
         const status = req.query.s;
-        const setores = await setorModel.find();
-        res.render("setor/listagem", {setores, status});
+        const setors = await setorModel.find();
+        res.render("setor/listagem", {setors, status});
     }
 
     //novo setor
@@ -16,45 +16,42 @@ class setorController{
                 descricao: req.body.descricao,
                 nome: req.body.nome,
                 estado: req.body.estado,
-                
             });
-            res.redirect("/setores?s=3");
+            res.redirect("/setors?s=3");
         } else{ //cadastrar
             const novosetor = new setorModel({
                 descricao: req.body.descricao,
                 nome: req.body.nome,
                 estado: req.body.estado
-         
         });
         
         await novosetor.save();
-        res.redirect("/setores?s=1");
+        res.redirect("/setors?s=1");
      }
     }
 
     //cadastro
-    static async cadastrarGet(req,res){
-        const nome = req.params.nome;
-        let setor = {}
-        if(setor.descricao != undefined){
-            setor = await setorModel.findOne({nome});
-        }
-
-        res.render("setor/cadastrar", {setor});
+    static async cadastrarGet(req, res) {
+    const _id = req.params._id;
+    let setor = {};
+    if (_id) {
+        setor = await setorModel.findOne({ _id });
     }
+    res.render("setor/cadastrar", { setor });
+}
 
     //detalhar
         static async detalhar(req,res){
-        const nome = req.params.nome;
-        const setor = await setorModel.findOne({nome});
+        const _id = req.params._id;
+        const setor = await setorModel.findOne({_id});
         res.render("setor/detalhar", {setor: setor});
     }
 
     //remover
     static async remover(req,res){
         const mat = req.params.nome;
-        await setorModel.deleteOne({nome: mat });
-        res.redirect("/setores?s=2")
+        await setorModel.deleteOne({_id: mat });
+        res.redirect("/setors?s=2")
     }
 
 }

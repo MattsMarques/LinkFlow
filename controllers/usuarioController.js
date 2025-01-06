@@ -80,9 +80,6 @@ class usuarioController{
         }
     }
     
- 
-
-    
     static logout(req, res){
         req.session.usuario = null;
         res.redirect("usuarios/login");

@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de setores</title>
-    <%include("../partials/cabecalho.ejs")%>
+    <title>Listagem de setors</title>
+    <%-include("../partials/cabecalho.ejs")%>
 </head>
 <body>
-
-
     <div class="container">
         <%if(status == "1"){%>
             <div class="alert alert-success alert-dismissible">
@@ -34,30 +32,30 @@
 
         <table class="table table-striped">
             <tr>
-                <th>Descrição</th>
+                <th>descrição</th>
                 <th>Nome</th>
-                <th>Estado</th>
+                <th>estado</th>
                 <th>Detalhar</th>
                 <th>Editar</th>
                 <th>Excluir</th>
             </tr>
-            <% setores.forEach(setor=>{ %>
+            <% setors.forEach(setor=>{ %>
                 <tr>
                     <td><%= setor.descricao %></td>
                     <td><%= setor.nome %></td>
                     <td><%= setor.estado %></td>
                     <td>
-                        <a href="/setores/<%= setor.cpf %>">
+                        <a href="/setors/<%= setor._id %>">
                         <button type="button" class="btn btn-info">Detalhar</button>
                     </a>
                     </td>
                     <td>
-                        <a href="/setores/cadastrar/<%= setor.cpf %>">
+                        <a href="/setors/cadastrar/<%= setor._id %>">
                         <button type="button" class="btn btn-warning">Editar</button>
                         </a>
                     </td>
                     <td>
-                        <a href="/setores/remover/<%= setor.cpf %>">
+                        <a href="/setors/remover/<%= setor._id %>">
                         <button onclick="return confirm('Deseja realmente exluir?')" type="button" class="btn btn-danger">Excluir</button>
                         </a>
                     </td>

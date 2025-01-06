@@ -16,7 +16,6 @@ class funcionarioController{
                 cpf: req.body.cpf,
                 nome: req.body.nome,
                 setor: req.body.setor,
-                
             });
             res.redirect("/funcionarios?s=3");
         } else{ //cadastrar
@@ -24,7 +23,6 @@ class funcionarioController{
                 cpf: req.body.cpf,
                 nome: req.body.nome,
                 setor: req.body.setor
-         
         });
         
         await novofuncionario.save();
