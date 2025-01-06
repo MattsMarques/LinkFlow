@@ -7,10 +7,16 @@ app.use(express.urlencoded({extended: true}));
 require("dotenv/config");
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI);
-const alunoModel = require("./models/alunoModel");
-const alunoRoutes = require("./routes/alunoRoutes");
 
-app.use(alunoRoutes);
+const funcionarioModel = require("./models/funcionarioModel");
+const funcionarioRoutes = require("./routes/funcionarioRoutes");
+
+app.use(funcionarioRoutes);
+
+const setorModel = require("./models/setorModel");
+const setorRoutes = require("./routes/setorRoutes");
+
+app.use(setorRoutes);
 
 const usuarioModel = require("./models/usuarioModel");
 const usuarioRoutes = require("./routes/usuarioRoutes");
@@ -20,7 +26,7 @@ const session = require("express-session");
 app.use(usuarioRoutes);
 
 app.use(session({
-    secret: 'ifpe',
+    secret: 'linkflow',
     saveUninitialized: false,
     resave: false
 }));
@@ -33,20 +39,20 @@ app.get("/", function(req, res){
 }
 })
 
-app.get("/alunos", async function(req, res){
+app.get("/funcionarios", async function(req, res){
     
 })
 
-app.post("/alunos", async function(req, res){
+app.post("/funcionarios", async function(req, res){
 
     
 })
 
-app.get("/alunos/cadastrar", function(req, res){
+app.get("/funcionarios/cadastrar", function(req, res){
     
 })
 
-app.get("/alunos/:matricula", async function(req, res){
+app.get("/funcionarios/:cpf", async function(req, res){
     
 })
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem de Alunos</title>
+    <title>Listagem de setores</title>
     <%-include("../partials/cabecalho.ejs")%>
 </head>
 <body>
@@ -34,30 +34,30 @@
 
         <table class="table table-striped">
             <tr>
-                <th>Matrícula</th>
+                <th>Descrição</th>
                 <th>Nome</th>
-                <th>Curso</th>
+                <th>Estado</th>
                 <th>Detalhar</th>
                 <th>Editar</th>
                 <th>Excluir</th>
             </tr>
-            <% alunos.forEach(aluno=>{ %>
+            <% setors.forEach(setor=>{ %>
                 <tr>
-                    <td><%= aluno.matricula %></td>
-                    <td><%= aluno.nome %></td>
-                    <td><%= aluno.curso %></td>
+                    <td><%= setor.descricao %></td>
+                    <td><%= setor.nome %></td>
+                    <td><%= setor.estado %></td>
                     <td>
-                        <a href="/alunos/<%= aluno.matricula %>">
+                        <a href="/setors/<%= setor.cpf %>">
                         <button type="button" class="btn btn-info">Detalhar</button>
                     </a>
                     </td>
                     <td>
-                        <a href="/alunos/cadastrar/<%= aluno.matricula %>">
+                        <a href="/setors/cadastrar/<%= setor.cpf %>">
                         <button type="button" class="btn btn-warning">Editar</button>
                         </a>
                     </td>
                     <td>
-                        <a href="/alunos/remover/<%= aluno.matricula %>">
+                        <a href="/setors/remover/<%= setor.cpf %>">
                         <button onclick="return confirm('Deseja realmente exluir?')" type="button" class="btn btn-danger">Excluir</button>
                         </a>
                     </td>

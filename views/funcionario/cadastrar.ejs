@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Cadastro</title>
+    <%-include("../partials/cabecalho.ejs")%>
+</head>
+<body>
+    <div class="container">
+        <form action="/funcionarios" method="POST">
+            <input type="hidden" name="_id" value="<%= funcionario._id %>">
+           <div>
+                <label class="form-label">Matrícula</label>
+                <input value="<%= funcionario.cpf %>" required type="text" name="cpf" class="form-control">
+           </div>
+           <div>
+                <label class="form-label">Nome</label>
+                <input value="<%= funcionario.nome %>" required type="text" name="nome" class="form-control">
+           </div>
+           <div>
+                <label class="form-label">setor</label>
+                <input value="<%= funcionario.setor %>" required type="text" name="setor" class="form-control">
+           </div>
+           <div>
+               <input type="submit" value="Salvar" class="btn btn-success">
+           </div>
+        </form> 
+    </div>
+         <%-include("../partials/rodape.ejs")%> 
+         
+         
+
+
+</body>
+</html>
