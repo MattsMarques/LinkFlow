@@ -11,31 +11,29 @@ class usuarioController{
     }
 
     //novo usuario
-    static async cadastrarPost(req,res){
-        const usuario = await usuarioModel;
-        
+    static async cadastrarPost(req, res){
         const salt = bcryptjs.genSaltSync();
         const hash = bcryptjs.hashSync(req.body.senha, salt);
-        if(req.body._id){//atualizar
-            await usuarioModel.findOneAndUpdate({_id: req.body._id},{
+        
+        if (req.body._id) { // Atualizar
+            await usuarioModel.findOneAndUpdate({_id: req.body._id}, {
                 email: req.body.email,
                 nome: req.body.nome,
                 senha: hash
-                
             });
             res.redirect("/usuarios?s=3");
-        } else{ //cadastrar
+        } else { // Cadastrar novo usuário
             const novousuario = new usuarioModel({
                 email: req.body.email,
                 nome: req.body.nome,
                 senha: hash
-         
-        });
-        
-        await novousuario.save();
-        res.redirect("/usuarios?s=1");
-     }
+            });
+            
+            await novousuario.save();
+            res.redirect("/usuarios?s=1");
+        }
     }
+    
 
     //cadastro
     static async cadastrarGet(req,res){
@@ -45,7 +43,7 @@ class usuarioController{
     }
 
     //detalhar
-        static async detalhar(req,res){
+    static async detalhar(req,res){
         const id = req.params.id;
         const usuario = await usuarioModel.findOne({_id: id});
         res.render("usuario/detalhar", {usuario: usuario});
@@ -67,19 +65,24 @@ class usuarioController{
         const usuario = await usuarioModel.findOne({
             email: req.body.email
         });
-        if (usuario == null){ 
+        if (usuario == null) { 
             res.redirect("/usuarios/login?s=1");
-        } else{
-            if (bcryptjs.compareSync(req.body.senha, usuario.senha) == true){
-                req.session.usuario = resultado.email;
-                res.redirect("/");
+        } else {
+            const senhaCorreta = bcryptjs.compareSync(req.body.senha, usuario.senha);
+            if (senhaCorreta) {
+                req.session.usuario = usuario.email; 
+                const returnTo = req.session.returnTo || '/'; // Página inicial como fallback
+                delete req.session.returnTo; // Limpa a URL salva
+                res.redirect(returnTo);
             } else {
-                res.redirect("/usuarios/login?s=1");
+                res.redirect("/usuarios/login?s=2");
             }
         }
-
     }
+    
+ 
 
+    
     static logout(req, res){
         req.session.usuario = null;
         res.redirect("usuarios/login");

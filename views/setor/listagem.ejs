@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de setores</title>
-    <%-include("../partials/cabecalho.ejs")%>
+    <%include("../partials/cabecalho.ejs")%>
 </head>
 <body>
 
@@ -41,23 +41,23 @@
                 <th>Editar</th>
                 <th>Excluir</th>
             </tr>
-            <% setors.forEach(setor=>{ %>
+            <% setores.forEach(setor=>{ %>
                 <tr>
                     <td><%= setor.descricao %></td>
                     <td><%= setor.nome %></td>
                     <td><%= setor.estado %></td>
                     <td>
-                        <a href="/setors/<%= setor.cpf %>">
+                        <a href="/setores/<%= setor.cpf %>">
                         <button type="button" class="btn btn-info">Detalhar</button>
                     </a>
                     </td>
                     <td>
-                        <a href="/setors/cadastrar/<%= setor.cpf %>">
+                        <a href="/setores/cadastrar/<%= setor.cpf %>">
                         <button type="button" class="btn btn-warning">Editar</button>
                         </a>
                     </td>
                     <td>
-                        <a href="/setors/remover/<%= setor.cpf %>">
+                        <a href="/setores/remover/<%= setor.cpf %>">
                         <button onclick="return confirm('Deseja realmente exluir?')" type="button" class="btn btn-danger">Excluir</button>
                         </a>
                     </td>

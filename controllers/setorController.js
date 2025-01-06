@@ -5,8 +5,8 @@ class setorController{
     //listagem
     static async listar(req, res){
         const status = req.query.s;
-        const setors = await setorModel.find();
-        res.render("setor/listagem", {setors, status});
+        const setores = await setorModel.find();
+        res.render("setor/listagem", {setores, status});
     }
 
     //novo setor
@@ -18,7 +18,7 @@ class setorController{
                 estado: req.body.estado,
                 
             });
-            res.redirect("/setors?s=3");
+            res.redirect("/setores?s=3");
         } else{ //cadastrar
             const novosetor = new setorModel({
                 descricao: req.body.descricao,
@@ -28,7 +28,7 @@ class setorController{
         });
         
         await novosetor.save();
-        res.redirect("/setors?s=1");
+        res.redirect("/setores?s=1");
      }
     }
 
@@ -36,7 +36,7 @@ class setorController{
     static async cadastrarGet(req,res){
         const nome = req.params.nome;
         let setor = {}
-        if(descricao != undefined){
+        if(setor.descricao != undefined){
             setor = await setorModel.findOne({nome});
         }
 
@@ -54,7 +54,7 @@ class setorController{
     static async remover(req,res){
         const mat = req.params.nome;
         await setorModel.deleteOne({nome: mat });
-        res.redirect("/setors?s=2")
+        res.redirect("/setores?s=2")
     }
 
 }

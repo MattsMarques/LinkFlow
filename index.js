@@ -9,27 +9,32 @@ const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI);
 
 const funcionarioModel = require("./models/funcionarioModel");
-const funcionarioRoutes = require("./routes/funcionarioRoutes");
 
-app.use(funcionarioRoutes);
 
 const setorModel = require("./models/setorModel");
-const setorRoutes = require("./routes/setorRoutes");
 
-app.use(setorRoutes);
 
 const usuarioModel = require("./models/usuarioModel");
-const usuarioRoutes = require("./routes/usuarioRoutes");
 
 const session = require("express-session");
 
-app.use(usuarioRoutes);
 
 app.use(session({
     secret: 'linkflow',
     saveUninitialized: false,
     resave: false
 }));
+
+const funcionarioRoutes = require("./routes/funcionarioRoutes");
+app.use(funcionarioRoutes);
+
+const setorRoutes = require("./routes/setorRoutes");
+app.use(setorRoutes);
+
+const usuarioRoutes = require("./routes/usuarioRoutes");
+app.use(usuarioRoutes);
+
+
 
 app.get("/", function(req, res){
     if(req.session.usuario){

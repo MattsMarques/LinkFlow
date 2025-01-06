@@ -5,10 +5,9 @@ const auth = require("../middlewares/usuarioAuth");
 
 routes.get("/funcionarios", auth, funcionarioController.listar);
 
-routes.post("/funcionarios", funcionarioController.cadastrarPost);
+routes.post("/funcionarios", auth,funcionarioController.cadastrarPost);
 
-
-routes.get("/funcionarios/cadastrar/:cpf?", funcionarioController.cadastrarGet);
+routes.get("/funcionarios/cadastrar/:cpf?", auth, funcionarioController.cadastrarGet);
 
 routes.get("/funcionarios/:cpf", auth, funcionarioController.detalhar);
 
